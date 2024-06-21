@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-helm-chart.fullname" . }}  # Name of the deployment
+  labels:
+    {{- include "my-helm-chart.labels" . | nindent 4 }}  # Common labels for the deployment
+spec:
+  replicas: {{ .Values.replicaCount }}  # Number of pod replicas
+  selector:
+    matchLabels:
+      {{- include "my-helm-chart.selectorLabels" . | nindent 6 }}  # Selector to match the pod labels
+  template:
+    metadata:
+      labels:
+        {{- include "my-helm-chart.selectorLabels" . | nindent 8 }}  # Labels for the pod
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}  # Name of the container
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"  # Docker image with tag
+          imagePullPolicy: {{ .Values.image.pullPolicy }}  # Image pull policy
+          ports:
+            - containerPort: 80  # Container port to expose
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}  # Resource requests and limits
+      nodeSelector:
+        {{- toYaml .Values.nodeSelector | nindent 8 }}  # Node selector rules
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}  # Toleration rules
+      affinity:
+        {{- toYaml .Values.affinity | nindent 8 }}  # Affinity rules

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "my-helm-chart.fullname" . }}  # Name of the service
+  labels:
+    {{- include "my-helm-chart.labels" . | nindent 4 }}  # Common labels for the service
+spec:
+  type: {{ .Values.service.type }}  # Type of the service (ClusterIP, NodePort, LoadBalancer)
+  ports:
+    - port: {{ .Values.service.port }}  # Port to expose the service
+      targetPort: 80  # Target port on the container
+  selector:
+    {{- include "my-helm-chart.selectorLabels" . | nindent 4 }}  # Selector to match the pod labels

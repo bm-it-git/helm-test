@@ -1,0 +1,25 @@
+replicaCount: 1  # Number of replicas of the application
+
+image:
+  repository: bolenetwork/weather-app  # Docker image repository
+  pullPolicy: IfNotPresent  # Image pull policy (e.g., Always, IfNotPresent, Never)
+  tag: v2  # Tag of the Docker image
+
+service:
+  type: NodePort  # Type of the Kubernetes service (e.g., ClusterIP, NodePort, LoadBalancer)
+  port: 8080  # Port on which the service will be exposed
+
+resources: {}  # Resource requests and limits for the container
+# resources:
+#   limits:
+#     cpu: 100m
+#     memory: 128Mi
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
+
+nodeSelector: {}  # Node selector to specify the nodes on which the pods can run
+
+tolerations: []  # Tolerations for taints on nodes
+
+affinity: {}  # Affinity rules for scheduling pods
