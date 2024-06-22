@@ -1,30 +1,18 @@
-replicaCount: 5  # Number of replicas of the application
+replicaCount: 1
 
 image:
-  repository: nginx  # Docker image repository
-  pullPolicy: IfNotPresent  # Image pull policy (e.g., Always, IfNotPresent, Never)
-  tag: stable-alpine3.19-slim  # Tag of the Docker image
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: stable
 
 service:
-  name: my-app-service  # Name of the service
-  type: ClusterIP  # Type of the Kubernetes service (e.g., ClusterIP, NodePort, LoadBalancer)
-  port: 80  # Port on which the service will be exposed
+  type: ClusterIP
+  port: 80
 
-deployment:
-  name: my-app-deployment  # Name of the deployment
+resources: {}
 
-resources: {}  # Resource requests and limits for the container
-# Example of how to define resources:
-# resources:
-#   limits:
-#     cpu: 100m
-#     memory: 128Mi
-#   requests:
-#     cpu: 100m
-#     memory: 128Mi
+nodeSelector: {}
 
-nodeSelector: {}  # Node selector to specify the nodes on which the pods can run
+tolerations: []
 
-tolerations: []  # Tolerations for taints on nodes
-
-affinity: {}  # Affinity rules for scheduling pods
+affinity: {}

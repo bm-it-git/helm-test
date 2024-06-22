@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment.name }}  # Name of the deployment from values.yaml
+  name: nginx-deployment
   labels:
-    app: {{ .Values.deployment.name }}  # Label for the application
+    app: nginx
 spec:
-  replicas: {{ .Values.replicaCount }}  # Number of pod replicas
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.deployment.name }}  # Selector label for the application name
+      app: nginx
   template:
     metadata:
       labels:
-        app: {{ .Values.deployment.name }}  # Label for the application name
+        app: nginx
     spec:
       containers:
-        - name: {{ .Values.deployment.name }}  # Name of the container
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"  # Docker image with tag
-          imagePullPolicy: {{ .Values.image.pullPolicy }}  # Image pull policy
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80  # Container port to expose
+            - containerPort: 80
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}  # Resource requests and limits
+            {{- toYaml .Values.resources | nindent 12 }}
       nodeSelector:
-        {{- toYaml .Values.nodeSelector | nindent 8 }}  # Node selector rules
+        {{- toYaml .Values.nodeSelector | nindent 8 }}
       tolerations:
-        {{- toYaml .Values.tolerations | nindent 8 }}  # Toleration rules
+        {{- toYaml .Values.tolerations | nindent 8 }}
       affinity:
-        {{- toYaml .Values.affinity | nindent 8 }}  # Affinity rules
+        {{- toYaml .Values.affinity | nindent 8 }}
