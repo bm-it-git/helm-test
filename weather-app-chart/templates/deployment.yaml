@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-helm-chart.fullname" . }}  # Name of the deployment
+  name: {{ .Values.deployment.name }}  # Name of the deployment from values.yaml
   labels:
-    {{- include "my-helm-chart.labels" . | nindent 4 }}  # Common labels for the deployment
+    app: {{ .Values.deployment.name }}  # Label for the application
 spec:
   replicas: {{ .Values.replicaCount }}  # Number of pod replicas
   selector:
     matchLabels:
-      {{- include "my-helm-chart.selectorLabels" . | nindent 6 }}  # Selector to match the pod labels
+      app: {{ .Values.deployment.name }}  # Selector label for the application name
   template:
     metadata:
       labels:
-        {{- include "my-helm-chart.selectorLabels" . | nindent 8 }}  # Labels for the pod
+        app: {{ .Values.deployment.name }}  # Label for the application name
     spec:
       containers:
-        - name: {{ .Chart.Name }}  # Name of the container
+        - name: {{ .Values.deployment.name }}  # Name of the container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"  # Docker image with tag
           imagePullPolicy: {{ .Values.image.pullPolicy }}  # Image pull policy
           ports:

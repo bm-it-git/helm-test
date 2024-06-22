@@ -3,14 +3,18 @@ replicaCount: 1  # Number of replicas of the application
 image:
   repository: nginx  # Docker image repository
   pullPolicy: IfNotPresent  # Image pull policy (e.g., Always, IfNotPresent, Never)
-  tag: stable-alpine3.19-slim
-  # Tag of the Docker image
+  tag: stable-alpine3.19-slim  # Tag of the Docker image
 
 service:
+  name: my-app-service  # Name of the service
   type: ClusterIP  # Type of the Kubernetes service (e.g., ClusterIP, NodePort, LoadBalancer)
   port: 80  # Port on which the service will be exposed
 
+deployment:
+  name: my-app-deployment  # Name of the deployment
+
 resources: {}  # Resource requests and limits for the container
+# Example of how to define resources:
 # resources:
 #   limits:
 #     cpu: 100m
