@@ -1,4 +1,4 @@
-replicaCount: 1  # Number of replicas of the application
+replicaCount: 5  # Number of replicas of the application
 
 image:
   repository: nginx  # Docker image repository
