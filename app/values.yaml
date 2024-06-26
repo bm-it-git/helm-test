@@ -1,5 +1,6 @@
 replicaCount: 1
-
+appConfig:
+  name: weather-app
 image:
   repository: bolenetwork/weather-app
   tag: v2
@@ -7,4 +8,5 @@ image:
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 8080 # Port on which the app is listening
+  targetPort: 8080
