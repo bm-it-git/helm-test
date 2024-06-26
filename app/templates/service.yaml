@@ -1,14 +1,30 @@
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "nginx-app.fullname" . }}
+  name: {{ .Values.appConfig.name }}
   labels:
-    app: {{ include "nginx-app.name" . }}
+    app: {{ .Values.appConfig.name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 8080
   selector:
-    app: {{ include "nginx-app.name" . }}
+    app: {{ .Values.appConfig.name }}
+
+
+#####Working file ####
+
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: {{ include "nginx-app.fullname" . }}
+#  labels:
+#    app: {{ include "nginx-app.name" . }}
+#spec:
+#  type: {{ .Values.service.type }}
+#  ports:
+#    - port: {{ .Values.service.port }}
+#      targetPort: 8080
+#  selector:
+#    app: {{ include "nginx-app.name" . }}

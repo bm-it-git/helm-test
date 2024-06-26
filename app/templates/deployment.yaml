@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appConfig.name }} #{{ include "nginx-app.fullname" . }}
+  name: {{ .Values.appConfig.name }}
   labels:
-    app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+    app: {{ .Values.appConfig.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+      app: {{ .Values.appConfig.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+        app: {{ .Values.appConfig.name }}
     spec:
       containers:
         - name: nginx
@@ -21,4 +21,32 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+
+
+
+#### Working file #####
+
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: {{ .Values.appConfig.name }} #{{ include "nginx-app.fullname" . }}
+#  labels:
+#    app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+#spec:
+#  replicas: {{ .Values.replicaCount }}
+#  selector:
+#    matchLabels:
+#      app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+#  template:
+#    metadata:
+#      labels:
+#        app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
+#    spec:
+#      containers:
+#        - name: nginx
+#          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+#          imagePullPolicy: {{ .Values.image.pullPolicy }}
+#          ports:
+#            - name: http
+#              containerPort: 8080
 
