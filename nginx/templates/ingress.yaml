@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.appConfig.name }}-ingress
+  labels:
+    app: {{ .Values.appConfig.name }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: weather-app-tls
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appConfig.name }}
+                port:
+                  number: {{ .Values.service.port }}

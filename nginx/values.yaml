@@ -1,0 +1,35 @@
+appConfig:
+  name: nginx
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  host: nginx.local
+
+
+
+
+##### working File ####
+
+#replicaCount: 1
+#appConfig:
+#  name: weather-app
+#image:
+#  repository: bolenetwork/weather-app
+#  tag: v2
+#  pullPolicy: IfNotPresent
+#
+#service:
+#  type: ClusterIP
+#  port: 8080 # Port on which the app is listening
+#  targetPort: 8080
