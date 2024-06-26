@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.ingress.host }}
-      secretName: weather-app-tls
+      secretName: nginx-tls-secret
   rules:
     - host: {{ .Values.ingress.host }}
       http:
