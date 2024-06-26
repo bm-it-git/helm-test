@@ -1,7 +1,7 @@
 appConfig:
   name: weather-app
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: nginx
@@ -10,7 +10,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 
 ##### working File ####
