@@ -12,6 +12,10 @@ service:
   type: ClusterIP
   port: 8080
 
+ingress:
+  host: weather-app.local
+
+
 
 
 ##### working File ####
