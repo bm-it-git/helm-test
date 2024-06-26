@@ -15,12 +15,13 @@ spec:
         app: {{ .Values.appConfig.name }}
     spec:
       containers:
-        - name: nginx
+        - name: {{ .Values.appConfig.name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 8080
+
 
 
 
@@ -43,7 +44,7 @@ spec:
 #        app: {{ .Values.appConfig.name }} #{{ include "nginx-app.name" . }}
 #    spec:
 #      containers:
-#        - name: nginx
+#        - name: {{ .Values.appConfig.name }} # nginx
 #          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
 #          imagePullPolicy: {{ .Values.image.pullPolicy }}
 #          ports:

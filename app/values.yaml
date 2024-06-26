@@ -4,13 +4,14 @@ appConfig:
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
+  repository: bolenetwork/weather-app
+  tag: v2
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 8080
+
 
 
 ##### working File ####
