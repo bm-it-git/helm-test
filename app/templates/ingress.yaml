@@ -7,6 +7,10 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: weather-app-tls
   rules:
     - host: {{ .Values.ingress.host }}
       http:
