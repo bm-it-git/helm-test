@@ -1,0 +1,3 @@
+# Default values for the crossplane-buckets chart.
+# This is where you can define variables to be used in your templates.
+# For now, you can leave it empty.
