@@ -10,6 +10,7 @@ spec:
     location: US                # Specify the bucket's location (e.g., US, EU)
     storageClass: STANDARD       # Choose a storage class (e.g., STANDARD, NEARLINE)
 
+--- 
 ##### Second Bucket ######
 apiVersion: storage.gcp.upbound.io/v1beta1  # Ensure the API version is correct
 kind: Bucket
