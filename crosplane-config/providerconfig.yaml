@@ -1,0 +1,13 @@
+apiVersion: gcp.upbound.io/v1beta1  # Ensure this matches the correct CRD API version
+kind: ProviderConfig
+metadata:
+  name: gcp-provider
+spec:
+  projectID: prj-crossplane         # Replace with your actual GCP project ID
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-creads
+      key: gcp-greds
+

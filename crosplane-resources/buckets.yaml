@@ -1,0 +1,11 @@
+apiVersion: storage.gcp.upbound.io/v1beta1  # Ensure the API version is correct
+kind: Bucket
+metadata:
+  name: 011024my-storage-bucket      # Ensure this name is unique within your GCP project
+  namespace: crossplane-system  # Adjust this if your Crossplane setup uses a different namespace
+spec:
+  providerConfigRef:
+    name: gcp-provider          # Reference your ProviderConfig
+  forProvider:
+    location: US                # Specify the bucket's location (e.g., US, EU)
+    storageClass: STANDARD       # Choose a storage class (e.g., STANDARD, NEARLINE)
